@@ -53,8 +53,7 @@
   <h1>要跟我和好嗎？ 🥺</h1>
   <div id="message">選一個吧～</div>
   <div id="imageArea">
-    <!-- 👇 這裡放你的圖片，可以改檔名或網址 -->
-    <img src="cute.png" alt="可愛圖片">
+    <img src="cute1.png" alt="可愛圖片">
   </div>
   <div class="buttonArea">
     <button id="noBtn">不和好 ❌</button>
@@ -62,33 +61,67 @@
   </div>
 
   <script>
-    const messages = [
+    // 隨機撒嬌語
+    const messagesNo = [
       "真的不要和我好嗎🥺",
       "拜託嘛～再抱抱我一下啦 💕",
-      "不和好我會哭給妳看喔 (｡>﹏<｡)",
-      "和我好啦～我超想妳的！",
+      "男朋朋哭給妳看喔 (｡>﹏<｡)",
+      "和我好啦～好想小狐狸喔！",
       "不行！一定要和好 😘"
+    ];
+
+    // 隨機和好語
+    const messagesYes = [
+      "耶！我們和好啦 💖 抱抱抱～ 🫂",
+      "嘿嘿～就知道女朋朋最愛我了 😘",
+      "和好成功！現在給我親一個～ 💋",
+      "我就知道小狐狸捨不得啦 (｡♥‿♥｡)"
+    ];
+
+    // 撒嬌圖片池
+    const sadImages = [
+      "cute1.gif",
+      "cute2.gif",
+      "cute3.gif",
+      "cute4.gif"
+    ];
+
+    // 抱抱圖片池
+    const hugImages = [
+      "hug1.gif",
+      "hug2.gif",
+      "hug3.gif",
+      "hug4.gif"
     ];
 
     const noBtn = document.getElementById("noBtn");
     const yesBtn = document.getElementById("yesBtn");
     const message = document.getElementById("message");
+    const imageArea = document.querySelector("#imageArea img");
 
     let yesSize = 1;
 
+    // 按下「不和好」
     noBtn.addEventListener("click", () => {
-      // 隨機換一句撒嬌語
-      const randomMsg = messages[Math.floor(Math.random() * messages.length)];
+      const randomMsg = messagesNo[Math.floor(Math.random() * messagesNo.length)];
+      const randomImg = sadImages[Math.floor(Math.random() * sadImages.length)];
       message.textContent = randomMsg;
+      imageArea.src = randomImg;
 
       // 讓「和好」按鈕變大
       yesSize += 0.3;
       yesBtn.style.transform = `scale(${yesSize})`;
     });
 
+    // 按下「和好」
     yesBtn.addEventListener("click", () => {
-      message.textContent = "耶！我們和好啦 💖 抱抱抱～ 🫂";
+      const randomMsg = messagesYes[Math.floor(Math.random() * messagesYes.length)];
+      const randomImg = hugImages[Math.floor(Math.random() * hugImages.length)];
+      message.textContent = randomMsg;
+      imageArea.src = randomImg;
+
       yesBtn.style.transform = "scale(1)";
+      yesSize = 1;
     });
   </script>
 </body>
