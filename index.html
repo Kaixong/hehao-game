@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>和好遊戲 💖</title>
+  <style>
+    body {
+      font-family: "Microsoft JhengHei", sans-serif;
+      text-align: center;
+      background: #fff0f5;
+      padding: 30px;
+    }
+    h1 {
+      color: #ff6699;
+    }
+    #message {
+      margin: 20px;
+      font-size: 20px;
+      color: #cc3366;
+      min-height: 40px;
+    }
+    #imageArea {
+      margin: 20px;
+    }
+    #imageArea img {
+      max-width: 250px;
+      border-radius: 16px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    .buttonArea {
+      margin-top: 50px; /* 👈 把按鈕往下移 */
+    }
+    button {
+      padding: 15px 30px;
+      margin: 20px;
+      font-size: 20px;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    #noBtn {
+      background-color: #cccccc;
+      color: #333;
+    }
+    #yesBtn {
+      background-color: #ff6699;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <h1>要跟我和好嗎？ 🥺</h1>
+  <div id="message">選一個吧～</div>
+  <div id="imageArea">
+    <!-- 👇 這裡放你的圖片，可以改檔名或網址 -->
+    <img src="cute.png" alt="可愛圖片">
+  </div>
+  <div class="buttonArea">
+    <button id="noBtn">不和好 ❌</button>
+    <button id="yesBtn">和好 💖</button>
+  </div>
+
+  <script>
+    const messages = [
+      "真的不要和我好嗎🥺",
+      "拜託嘛～再抱抱我一下啦 💕",
+      "不和好我會哭給妳看喔 (｡>﹏<｡)",
+      "和我好啦～我超想妳的！",
+      "不行！一定要和好 😘"
+    ];
+
+    const noBtn = document.getElementById("noBtn");
+    const yesBtn = document.getElementById("yesBtn");
+    const message = document.getElementById("message");
+
+    let yesSize = 1;
+
+    noBtn.addEventListener("click", () => {
+      // 隨機換一句撒嬌語
+      const randomMsg = messages[Math.floor(Math.random() * messages.length)];
+      message.textContent = randomMsg;
+
+      // 讓「和好」按鈕變大
+      yesSize += 0.3;
+      yesBtn.style.transform = `scale(${yesSize})`;
+    });
+
+    yesBtn.addEventListener("click", () => {
+      message.textContent = "耶！我們和好啦 💖 抱抱抱～ 🫂";
+      yesBtn.style.transform = "scale(1)";
+    });
+  </script>
+</body>
+</html>
