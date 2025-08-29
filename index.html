@@ -3,49 +3,69 @@
 <head>
   <meta charset="UTF-8">
   <title>和好遊戲 💖</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
       font-family: "Microsoft JhengHei", sans-serif;
       text-align: center;
       background: #fff0f5;
-      padding: 30px;
+      padding: 5vw;
     }
+
     h1 {
       color: #ff6699;
+      font-size: 8vw; /* 標題隨螢幕縮放 */
     }
+
     #message {
-      margin: 20px;
-      font-size: 20px;
+      margin: 3vw 0;
+      font-size: 4.5vw;
       color: #cc3366;
-      min-height: 40px;
+      min-height: 6vw;
     }
+
     #imageArea {
-      margin: 20px;
+      margin: 3vw 0;
     }
+
     #imageArea img {
-      max-width: 250px;
+      width: 80%;      /* 圖片寬度隨螢幕縮放 */
+      max-width: 250px; 
+      height: auto; 
       border-radius: 16px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
+
     .buttonArea {
-      margin-top: 50px; /* 👈 把按鈕往下移 */
+      margin-top: 8vw;
     }
+
     button {
-      padding: 15px 30px;
-      margin: 20px;
-      font-size: 20px;
+      padding: 3vw 6vw;
+      margin: 3vw;
+      font-size: 5vw;
       border-radius: 12px;
       border: none;
       cursor: pointer;
       transition: all 0.3s ease;
     }
+
     #noBtn {
       background-color: #cccccc;
       color: #333;
     }
+
     #yesBtn {
       background-color: #ff6699;
       color: white;
+    }
+
+    @media screen and (min-width: 601px) {
+      /* 桌面版微調 */
+      h1 { font-size: 32px; }
+      #message { font-size: 20px; }
+      button { font-size: 20px; padding: 15px 30px; margin: 20px; }
+      .buttonArea { margin-top: 50px; }
     }
   </style>
 </head>
@@ -61,7 +81,6 @@
   </div>
 
   <script>
-    // 隨機撒嬌語
     const messagesNo = [
       "真的不要和我好嗎🥺",
       "拜託嘛～再抱抱我一下啦 💕",
@@ -70,7 +89,6 @@
       "不行！一定要和好 😘"
     ];
 
-    // 隨機和好語
     const messagesYes = [
       "耶！我們和好啦 💖 抱抱抱～ 🫂",
       "嘿嘿～就知道女朋朋最愛我了 😘",
@@ -78,7 +96,6 @@
       "我就知道小狐狸捨不得啦 (｡♥‿♥｡)"
     ];
 
-    // 撒嬌圖片池
     const sadImages = [
       "cute1.gif",
       "cute2.gif",
@@ -86,7 +103,6 @@
       "cute4.gif"
     ];
 
-    // 抱抱圖片池
     const hugImages = [
       "hug1.gif",
       "hug2.gif",
@@ -101,19 +117,16 @@
 
     let yesSize = 1;
 
-    // 按下「不和好」
     noBtn.addEventListener("click", () => {
       const randomMsg = messagesNo[Math.floor(Math.random() * messagesNo.length)];
       const randomImg = sadImages[Math.floor(Math.random() * sadImages.length)];
       message.textContent = randomMsg;
       imageArea.src = randomImg;
 
-      // 讓「和好」按鈕變大
       yesSize += 0.3;
       yesBtn.style.transform = `scale(${yesSize})`;
     });
 
-    // 按下「和好」
     yesBtn.addEventListener("click", () => {
       const randomMsg = messagesYes[Math.floor(Math.random() * messagesYes.length)];
       const randomImg = hugImages[Math.floor(Math.random() * hugImages.length)];
